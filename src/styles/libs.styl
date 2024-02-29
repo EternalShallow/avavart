@@ -1,0 +1,184 @@
+SSF(fs){
+  fs / 100 //750px
+}
+SSF1(fs){
+  fs / 200 //750px
+}
+
+fl() {
+  display: flex;
+}
+
+fl-s-b() {
+  display: flex;
+  justify-content space-between
+}
+
+fl-c() {
+  display: flex;
+  align-items center
+}
+
+fl-c-b() {
+  display: flex;
+  justify-content space-between
+  align-items center
+}
+
+fl-c-c() {
+  display: flex;
+  justify-content center;
+  align-items center;
+}
+
+c-act() {
+  &:active{
+     opacity .8
+  }
+}
+
+c-act-2() {
+  &:active{
+    background-color rgba(0, 0, 0, 0.05)
+  }
+}
+
+ft-fa() {
+  direction rtl
+  text-align: right;
+}
+
+//SSF2(fs){
+//  fs / 150 //1125px iPhone X
+//}
+
+// SSF2(fs){
+//     fs * 25 / 36 / 100
+// }
+
+size(w, h){
+  width: w;
+  height: h;
+}
+
+fullheight(n){
+  height: n;
+  line-height: n;
+}
+
+blocksize(n){
+  width: n;
+  height: n;
+}
+
+fscolor(size, color){
+  font-size: size;
+  color: color;
+}
+
+//pos_middle(){
+//  top: 50%;
+//  margin-top: -(@height / 2)
+//}
+//
+//pos_center(){
+//  left: 50%;
+//  margin-left: -(@width / 2)
+//}
+//
+//pos_toxy(x, y){
+//  left: x;
+//  top: y;
+//}
+
+backgroundGradient(leftcolor, rightcolor){
+  background: leftcolor;
+  background: -moz-linear-gradient(left, leftcolor, rightcolor);
+  background: -webkit-gradient(linear, 0 50%, 100% 50%, from(leftcolor), to(rightcolor));
+  background: -o-linear-gradient(left, leftcolor, rightcolor);
+  background: linear-gradient(90deg, leftcolor 0%, rightcolor 100%);
+}
+
+backgroundGradient2(topcolor, btmcolor){
+  background: topcolor;
+  background: -moz-linear-gradient(top, topcolor, btmcolor);
+  background: -webkit-gradient(linear, 50% 0, 50% 100%, from(topcolor), to(btmcolor));
+  background: -o-linear-gradient(top, topcolor, btmcolor);
+  background: linear-gradient(0deg, topcolor 0%, btmcolor 100%);
+}
+
+$color_blue = #5464FC
+$color_black = #141414
+$color_white = #FAFAFA
+
+$font_main = #141414
+$font_tip = rgba(20, 20, 20, 0.6)
+$border_color = rgba(101, 99, 135, 0.8)
+//$border_color = #2D2C3D
+
+//$fssmall = SSF(24rem)
+//$fslarge = SSF(40rem)
+//$fssize1 = SSF(28rem)
+//$fssize2 = SSF(32rem)
+//$fssize3 = SSF(36rem)
+//
+//$colorblue = #008aff
+//$colorred = #f00
+//$colorblack = #222
+
+@keyframes loading{
+  0% {
+    transform rotate(0deg)
+  }
+  8.333333%{
+    transform rotate(30deg)
+  }
+  16.666666%{
+    transform rotate(60deg)
+  }
+  25%{
+    transform rotate(90deg)
+  }
+  33.333333%{
+    transform rotate(120deg)
+  }
+  41.666666%{
+    transform rotate(150deg)
+  }
+  50%{
+    transform rotate(180deg)
+  }
+  58.333333%{
+    transform rotate(210deg)
+  }
+  66.666666%{
+    transform rotate(240deg)
+  }
+  75%{
+    transform rotate(270deg)
+  }
+  83.333333%{
+    transform rotate(300deg)
+  }
+  91.666666%{
+    transform rotate(330deg)
+  }
+  100%{
+    transform rotate(360deg)
+  }
+}
+.line{
+  height: 0.01rem;
+  background: #EAECF1;
+}
+.hash-span{
+  color: #025cf6
+}
+.blue-img{
+  border: 1px solid #2F2637;
+  background-image: linear-gradient(90deg, #222029 0.11%, #1C2229 53.61%, #1D2822 98.28%);
+}
+.black-img{
+  border: 1px solid #2F2637;
+  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.60) 0%, rgba(0, 0, 0, 0.60) 100%), linear-gradient(90deg, rgba(246, 136, 255, 0.06) 0.11%, rgba(123, 180, 255, 0.06) 53.61%, rgba(154, 255, 115, 0.06) 98.28%);
+}

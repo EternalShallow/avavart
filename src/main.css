@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    .scrollbar::-webkit-scrollbar {
+        width: 5px;
+        height: 5px;
+    }
+
+    .scrollbar::-webkit-scrollbar-track {
+        /*border-radius: 100vh;*/
+        /*background: #f7f4ed;*/
+        margin: 2px 0;
+    }
+
+    .scrollbar::-webkit-scrollbar-thumb {
+        background: #d1d1d1;
+        border-radius: .25rem;
+        /*border: 3px solid #f6f7ed;*/
+    }
+
+    .scrollbar::-webkit-scrollbar-thumb:hover {
+        background: #c1c1c1;
+    }
+}
+
+@font-face {
+    font-family: 'LanTing';
+    src: url('./assets/font/FZLanTing.ttf');
+}

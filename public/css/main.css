@@ -1,0 +1,50 @@
+@font-face {
+    font-family: 'Menlo';
+    src: url('../fonts/Menlo-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.mainpagemask{
+    top: 0;
+    left: 0;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+}
+.mainpagemask .maskdetail{
+    background: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1.86rem;
+    height: 1.86rem;
+    position: relative;
+}
+.mainpagemask .maskdetail .loadingimg{
+    position: absolute;
+    display: block;
+    width: 1.86rem;
+    height: 1.86rem;
+    left: 0;
+}
+.mainpagemask .maskdetail .loadingimg.circle{
+    z-index: 1;
+    margin-top: -.2rem;
+    animation: mainpageloading 1s infinite linear;
+}
+@keyframes mainpageloading{
+    0% {
+        transform: rotate(0deg);
+    }
+    50%{
+        transform: rotate(180deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
