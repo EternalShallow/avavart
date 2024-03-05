@@ -76,10 +76,17 @@ export default {
         'top': '.64rem'
       },
       colors: {
+        'red': '#FF000A',
+        'red1': '#E60009',
         'normal': '#fff',
+        'bd1': '#F5A2A5',
+        'white': '#fff',
         'spcol': '#D9D9D9',
-        'thecol': '#6100FF',
+        'thecol': '#FF000A',
         'blockbg': '#16141E',
+        'black': '#0A0A0B',
+        'black0': '#000',
+        'gray': '#999',
         'tabbg': '#1D2123',
         'tabcolor': '#B3B3B3',
         'yellow': "#FFF501",

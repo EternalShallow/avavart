@@ -11,7 +11,8 @@ import Hashloading from "./modules/hashloading/index.js";
 import UIComponents from './components/UIComps/index'
 import 'vant/lib/index.css';
 import Vant from 'vant'
-
+import ElementPlus from 'element-plus'
+import 'element-plus/dist/index.css'
 import "./permission.js";
 import "./main.css"
 
@@ -26,9 +27,9 @@ import {formatUrl} from "@/util/main.js";
 formatUrl()
 import VConsole from 'vconsole'
 import Config from "@/util/config.js";
-if (Config.isDebug) {
-  new VConsole()
-}
+// if (Config.isDebug) {
+//   new VConsole()
+// }
 
 const app = createApp(App)
 

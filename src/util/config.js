@@ -9,11 +9,15 @@ export default {
   languages: [
     {
       local: 'en',
-      txt: 'English'
+      txt: 'EN'
     },
     {
       local: 'zh',
       txt: '中文'
+    },
+    {
+      local: 'ko',
+      txt: '한국어'
     },
   ],
 }

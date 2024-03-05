@@ -1,21 +1,13 @@
 <template lang="pug">
-.wrapper(class="mt-160")
-  div(class="absolute w-full h-[5rem] overflow-hidden")
-    img(class="absolute w-[25.6rem] h-[5rem] left-1/2 -translate-x-1/2 top-0" src="@/assets/images/footbg.png")
-  div(class="h-322")
-  div(class="h-180 bg-blockbg relative z-1 flex justify-between items-center")
-    div(class="flex-1 pl-48 flex items-center uppercase text-40 font-Menlo italic")
-      img(class="w-80 h-80 mr-16" src="@/assets/images/logo.png")
-      | {{ $t('public.title') }}
-    div(class="text-26 font-medium") {{ $t('footer.lience') }}
-    div(class="flex-1 flex items-center justify-end pr-50")
+.wrapper(class="py-[1rem]")
+  div(class="relative z-1 text-center")
+    div(class="flex-1 pl-48 text-[1.04rem] font-bold") {{ $t('footer.title') }}
+    div(class="text-36 mt-[.08rem]") {{ $t('footer.desc') }}
+    div(class="flex-1 flex items-center justify-center mt-[.54rem]")
       a(class="ml-40" href="#" target="_blank" rel="noopener")
-        img(class="w-64 h-64" src="@/assets/images/icons/footlink1.png")
+        img(class="w-[1.14rem] h-[1.14rem]" src="@/assets/images/icon_footer1.png")
       a(class="ml-40" href="#" target="_blank" rel="noopener")
-        img(class="w-64 h-64" src="@/assets/images/icons/footlink2.png")
-      a(class="ml-40" href="#" target="_blank" rel="noopener")
-        img(class="w-64 h-64" src="@/assets/images/icons/footlink3.png")
-div(class="h-150")
+        img(class="w-[1.14rem] h-[1.14rem]" src="@/assets/images/icon_footer2.png")
 </template>
 
 <script setup>

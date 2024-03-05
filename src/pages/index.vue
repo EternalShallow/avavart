@@ -1,34 +1,188 @@
 <template lang="pug">
 PageHeader
-div(class="absolute w-full min-h-[20.28rem] overflow-hidden top-0")
-  img(class="block table:max-w-[36rem] table:w-[36rem] absolute top-0 left-1/2 -translate-x-1/2" src="@/assets/images/mainbg.png")
-.wrapper
-  div(class="h-[11.64rem] text-center")
-    div(class="h-224")
-    div(class="text-[1.36rem] whitespace-pre-line leading-[1.5rem]") {{ $t('index.toptxt') }}
-    div(class="text-40 leading-54 px-[3.2rem] mt-30") {{ $t('index.toptip') }}
-    div(class="flex justify-center")
-      XButton(@click="$router.push('/launchpad')" class="mt-66 px-96" :text="$t('public.link2')")
-.wrapper(class="bg-black min-h-100 px-60 py-200")
-  div(class="absolute left-0 h-2 bg-gradient-to-r from-white to-white/[0] w-full top-0")
-  div(class="relative pl-[4.66rem]")
-    div(class="absolute h-240 flex justify-center items-center text-[2.24rem] w-304 left-0") 01
-    div(class="leading-[1.2rem] text-[.8rem] font-bold") {{ $t('index.tit1') }}
-    div(class="mt-60 text-40 leading-60 text-white/[.6]") {{ $t('index.txt1') }}
-    div(class="absolute bg-spcol/[.6] w-2 top-280 left-152 -bottom-380")
-  div(class="relative pl-[4.66rem] mt-[4.2rem]")
-    div(class="absolute h-240 flex justify-center items-center text-[2.24rem] w-304 left-0") 02
-    div(class="leading-[1.2rem] text-[.8rem] font-bold") {{ $t('index.tit2') }}
-    div(class="mt-60 text-40 leading-60 text-white/[.6]") {{ $t('index.txt2') }}
-    div(class="absolute bg-spcol/[.6] w-2 top-280 left-152 -bottom-380")
-  div(class="relative pl-[4.66rem] mt-[4.2rem]")
-    div(class="absolute h-240 flex justify-center items-center text-[2.24rem] w-304 left-0") 03
-    div(class="leading-[1.2rem] text-[.8rem] font-bold") {{ $t('index.tit3') }}
-    div(class="mt-60 text-40 leading-60 text-white/[.6]") {{ $t('index.txt3') }}
-PageFooter
+div(class="bg-red w-full overflow-x-hidden")
+  .wrapper
+    div(class="text-center pb-[.92rem]")
+      div(class="h-120")
+      img(class="w-[3rem] h-[3rem] block mr-auto ml-auto" src="@/assets/images/logo_reb_white.png")
+      div(class="text-[1.04rem] whitespace-pre-line leading-[1.5rem] mt-[.4rem]") {{ $t('index.toptxt') }}
+      div(class="text-32 px-[3.2rem] mt-48") {{ $t('index.toptip') }}
+      div(class="flex justify-center")
+        XButton(@click="$router.push('/launchpad')" :theTheme="'confirm'" class="mr-[.56rem] bg-normal/[.5] mt-66 w-[4.2rem] h-1.04rem" :text="$t('public.link2')")
+        XButton(@click="$router.push('/launchpad')" :theTheme="'get'" class="bg-normal mt-66 text-black w-[4.2rem] h-1.04rem" :text="$t('public.link3')")
+  //.swiper-list(class="w-full overflow-x-auto px-[.48rem] flex center")
+    .swiper-item(class="bg-white rounded-[.32rem] w-[5rem] h-[7.08rem] px-[.2rem] pt-[.2rem] pb-[.32rem]" :class="i !==0 ? 'ml-[.4rem]' : 'ml-0'" v-for="(v, i) in artList")
+      div(class="w-[4.6rem] h-[5.44rem] overflow-hidden")
+        img(src="@/assets/images/swiper_img1.png" class="w-full block")
+      div {{v.name}}
+      div {{v.city}}
+  swiper(ref="{swiperRef}"
+    :slidesPerView="'auto'"
+    :initialSlide="1"
+    :centeredSlides="false"
+    :pagination="{type: 'fraction'}"
+    :navigation="false"
+    class="mySwiper w-full overflow-x-auto px-[.48rem] flex center pb-[1.2rem] pt-[.52rem]")
+    swiper-slide(class="text-center text-black0 bg-white rounded-[.32rem] cursor-pointer !w-[5rem] h-[7.08rem] px-[.2rem] pt-[.2rem] pb-[.32rem]" :class="i !==0 ? 'ml-[.4rem]' : 'ml-0'" v-for="(v, i) in artList")
+      div(class="w-[4.6rem] h-[5.44rem] overflow-hidden")
+        img(src="@/assets/images/swiper_img1.png" class="w-full block")
+      div(class="mt-[.24rem] text-32 font-bold") {{v.name}}
+      div(class="text-gray text-28") {{v.city}}
+  .wrapper(class="text-center pt-[.6rem]")
+    div(class="text-[1.04rem] whitespace-pre-line leading-[1.5rem] mt-[.4rem]") {{ $t('meet.title') }}
+    div(class="text-36 px-[3.2rem] mt-48") {{ $t('meet.desc') }}
+    div(class="flex items-center mt-[2.52rem] justify-center")
+      div(class="relative w-[9rem] h-[4.6rem] bg-white rounded-[.32rem] px-[1.04rem] pt-[1.92rem] pb-[1.04rem] text-black0 mr-[.96rem]")
+        img(src="@/assets/images/img_meet_1.png" class="absolute w-[2.64rem] h-[2.64] block top-[-1.32rem] left-[3.16rem]")
+        div(class="text-[.4rem] font-bold") {{$t('meet.intro1title')}}
+        div(class="text-[.32rem] mt-[.16rem]") {{$t('meet.intro1desc')}}
+      div(class="relative w-[9rem] h-[4.6rem] bg-white rounded-[.32rem] px-[1.04rem] pt-[1.92rem] pb-[1.04rem] text-black0")
+        img(src="@/assets/images/img_meet_2.png" class="absolute w-[2.64rem] h-[2.64] block top-[-1.32rem] left-[3.16rem]")
+        div(class="text-[.4rem] font-bold") {{$t('meet.intro2title')}}
+        div(class="text-[.32rem] mt-[.16rem]") {{$t('meet.intro2desc')}}
+    div(class="text-[1.04rem] whitespace-pre-line leading-[1.5rem] mt-[1.8rem]") {{ $t('meet.title1') }}
+    div(class="text-36 px-[3.2rem] mt-8") {{ $t('meet.desc1') }}
+    div(class="flex items-center mt-[2.52rem] justify-center")
+      div(class="relative w-[9rem] h-[4.6rem] bg-white rounded-[.32rem] px-[1.04rem] pt-[1.92rem] pb-[1.04rem] text-black0 mr-[.96rem]")
+        img(src="@/assets/images/img_meet_3.png" class="absolute w-[2.64rem] h-[2.64] block top-[-1.32rem] left-[3.16rem]")
+        div(class="text-[.4rem] font-bold") {{$t('meet.intro3title')}}
+        div(class="text-[.32rem] mt-[.16rem]") {{$t('meet.intro3desc')}}
+      div(class="relative w-[9rem] h-[4.6rem] bg-white rounded-[.32rem] px-[1.04rem] pt-[1.92rem] pb-[1.04rem] text-black0")
+        img(src="@/assets/images/img_meet_4.png" class="absolute w-[2.64rem] h-[2.64] block top-[-1.32rem] left-[3.16rem]")
+        div(class="text-[.4rem] font-bold") {{$t('meet.intro4title')}}
+        div(class="text-[.32rem] mt-[.16rem]") {{$t('meet.intro4desc')}}
+  div(class="mt-[1.2rem] pt-[1.2rem] pb-[1.2rem] bg-red1")
+    .wrapper(class="text-center")
+      div(class="text-[1.04rem] whitespace-pre-line leading-[1.5rem] mt-[.4rem]") {{ $t('roadmap.title') }}
+      div(class="text-32 px-[3.2rem] mt-48") {{ $t('roadmap.desc') }}
+      div(class="flex justify-center mt-[1.2rem]")
+        div(class="w-[5.6rem] h-[5.6rem] rounded-[.32rem] border border-bd1 px-[.48rem] py-[.48rem]")
+          div(class="font-bold text-36") {{$t('roadmap.q1title')}}
+          img(src="@/assets/images/icon_raodmap_1.png" class="w-[2.52rem] h-[2.52rem] block mx-auto mt-[.32rem]")
+          div(class="mt-[.32rem] font-bold text-36") {{$t('roadmap.q1subtitle')}}
+          div(class="text-28 mt-[.08rem]") {{$t('roadmap.q1desc')}}
+        div(class="w-[5.6rem] h-[5.6rem] rounded-[.32rem] border border-bd1 ml-[.48rem] mr-[.48rem] px-[.48rem] py-[.48rem]")
+          div(class="font-bold text-36") {{$t('roadmap.q2title')}}
+          img(src="@/assets/images/icon_raodmap_2.png" class="w-[2.52rem] h-[2.52rem] block mx-auto mt-[.32rem]")
+          div(class="mt-[.32rem] font-bold text-36") {{$t('roadmap.q2subtitle')}}
+          div(class="text-28 mt-[.08rem]") {{$t('roadmap.q2desc')}}
+        div(class="w-[5.6rem] h-[5.6rem] rounded-[.32rem] border border-bd1 px-[.48rem] py-[.48rem]")
+          div(class="font-bold text-36") {{$t('roadmap.q3title')}}
+          img(src="@/assets/images/icon_raodmap_3.png" class="w-[2.52rem] h-[2.52rem] block mx-auto mt-[.32rem]")
+          div(class="mt-[.32rem] font-bold text-36") {{$t('roadmap.q3subtitle')}}
+          div(class="text-28 mt-[.08rem]") {{$t('roadmap.q3desc')}}
+      div(class="w-[17.66rem] h-[4.28rem] rounded-[.32rem] border border-bd1 px-[.48rem] py-[.48rem] mx-auto mt-[.32rem]")
+        img(src="@/assets/images/icon_raodmap_4.png" class="w-[6.46rem] h-[1.76rem] block mx-auto mt-[.32rem]")
+        div(class="mt-[.32rem] font-bold text-36") {{$t('roadmap.qtitle')}}
+        div(class="text-28 mt-[.08rem]") {{$t('roadmap.qdesc')}}
+  PageFooter
 </template>
 
 <script setup>
-import PageHeader from '@/components/pageheader/index.vue'
+import PageHeader from '@/components/PageHeader/index.vue'
 import PageFooter from '@/components/PageFooter/index.vue'
+// Import Swiper Vue.js components
+import { Swiper, SwiperSlide } from 'swiper/vue'
+// Import Swiper styles
+import 'swiper/css';
+import {getCurrentInstance, ref, onMounted, computed, watch} from "vue";
+import {useStore} from "vuex";
+const { proxy } = getCurrentInstance()
+const store = useStore()
+const artList = ref([
+	{
+		name: "JJ Lin",
+		city: 'Taiwan'
+	},
+  {
+  	name: "Lisa",
+    city: 'Taiwan'
+  },
+	{
+		name: "Lady gaga",
+		city: 'Taiwan'
+	},
+	{
+		name: "jay zhou",
+		city: 'Taiwan'
+	},
+	{
+		name: "Stephen Chow",
+		city: 'Taiwan'
+	},
+	{
+		name: "JJ Lin",
+		city: 'Taiwan'
+	},
+	{
+		name: "Lisa",
+		city: 'Taiwan'
+	},
+	{
+		name: "Lady gaga",
+		city: 'Taiwan'
+	},
+	{
+		name: "jay zhou",
+		city: 'Taiwan'
+	},
+	{
+		name: "Stephen Chow",
+		city: 'Taiwan'
+	},
+	{
+		name: "JJ Lin",
+		city: 'Taiwan'
+	},
+	{
+		name: "Lisa",
+		city: 'Taiwan'
+	},
+	{
+		name: "Lady gaga",
+		city: 'Taiwan'
+	},
+	{
+		name: "jay zhou",
+		city: 'Taiwan'
+	},
+	{
+		name: "Stephen Chow",
+		city: 'Taiwan'
+	},
+	{
+		name: "jay Wu",
+		city: 'Taiwan'
+	},
+	{
+		name: "JJ Lin",
+		city: 'Taiwan'
+	},
+	{
+		name: "Lisa",
+		city: 'Taiwan'
+	},
+	{
+		name: "Lady gaga",
+		city: 'Taiwan'
+	},
+	{
+		name: "jay zhou",
+		city: 'Taiwan'
+	},
+	{
+		name: "Stephen Chow",
+		city: 'Taiwan'
+	},
+	{
+		name: "jay Wu",
+		city: 'Taiwan'
+	}
+])
 </script>
+<style>
+  .swiper{
+    padding-left: .48rem;
+    padding-right: .48rem;
+  }
+</style>

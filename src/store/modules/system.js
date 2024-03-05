@@ -4,6 +4,7 @@ const getDefaultState = () => {
     windowClientWidth: 0,
     isInApp: false,
     chainName: "",
+    lang: '',
     // 精度
     ttDecimal: 18,
     usdtDecimal: 6,
@@ -35,6 +36,9 @@ const mutations = {
   },
   SET_WINDOW_WIDTH: (state, width) => {
     state.windowClientWidth = width;
+  },
+  SET_SYSTEM_LOCALE: (state, lang) => {
+    state.lang = lang
   },
 };
 
