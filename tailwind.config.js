@@ -87,6 +87,7 @@ export default {
         'black': '#0A0A0B',
         'black0': '#000',
         'gray': '#999',
+        'gray1': '#EEF0F2',
         'tabbg': '#1D2123',
         'tabcolor': '#B3B3B3',
         'yellow': "#FFF501",

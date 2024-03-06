@@ -222,7 +222,7 @@ defineExpose({
 @import "styles/template.styl"
 
 body{
-  background-color #000
+  background-color #FF000A
   color #fff
 }
 

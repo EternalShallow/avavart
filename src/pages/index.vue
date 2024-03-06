@@ -8,8 +8,8 @@ div(class="bg-red w-full overflow-x-hidden")
       div(class="text-[1.04rem] whitespace-pre-line leading-[1.5rem] mt-[.4rem]") {{ $t('index.toptxt') }}
       div(class="text-32 px-[3.2rem] mt-48") {{ $t('index.toptip') }}
       div(class="flex justify-center")
-        XButton(@click="$router.push('/launchpad')" :theTheme="'confirm'" class="mr-[.56rem] bg-normal/[.5] mt-66 w-[4.2rem] h-1.04rem" :text="$t('public.link2')")
-        XButton(@click="$router.push('/launchpad')" :theTheme="'get'" class="bg-normal mt-66 text-black w-[4.2rem] h-1.04rem" :text="$t('public.link3')")
+        XButton(@click="showDialogLogin" :theTheme="'confirm'" class="mr-[.56rem] bg-normal/[.5] mt-66 w-[4.2rem] h-1.04rem" :text="$t('public.link2')")
+        XButton(@click="showDialogLogin" :theTheme="'get'" class="bg-normal mt-66 text-black w-[4.2rem] h-1.04rem" :text="$t('public.link3')")
   //.swiper-list(class="w-full overflow-x-auto px-[.48rem] flex center")
     .swiper-item(class="bg-white rounded-[.32rem] w-[5rem] h-[7.08rem] px-[.2rem] pt-[.2rem] pb-[.32rem]" :class="i !==0 ? 'ml-[.4rem]' : 'ml-0'" v-for="(v, i) in artList")
       div(class="w-[4.6rem] h-[5.44rem] overflow-hidden")
@@ -76,11 +76,13 @@ div(class="bg-red w-full overflow-x-hidden")
         div(class="mt-[.32rem] font-bold text-36") {{$t('roadmap.qtitle')}}
         div(class="text-28 mt-[.08rem]") {{$t('roadmap.qdesc')}}
   PageFooter
+DialogLogin(:isShow="isShowLoginDialog" @confirm="loginTiwwiter" @close="handleClose")
 </template>
 
 <script setup>
 import PageHeader from '@/components/PageHeader/index.vue'
 import PageFooter from '@/components/PageFooter/index.vue'
+import DialogLogin from '@/components/DialogLogin/index.vue'
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from 'swiper/vue'
 // Import Swiper styles
@@ -89,6 +91,7 @@ import {getCurrentInstance, ref, onMounted, computed, watch} from "vue";
 import {useStore} from "vuex";
 const { proxy } = getCurrentInstance()
 const store = useStore()
+const isShowLoginDialog = ref(false)
 const artList = ref([
 	{
 		name: "JJ Lin",
@@ -179,6 +182,15 @@ const artList = ref([
 		city: 'Taiwan'
 	}
 ])
+const showDialogLogin = () => {
+	isShowLoginDialog.value = true
+}
+const loginTiwwiter = () =>{
+	isShowLoginDialog.value = false
+}
+const handleClose = () => {
+	isShowLoginDialog.value = false
+}
 </script>
 <style>
   .swiper{

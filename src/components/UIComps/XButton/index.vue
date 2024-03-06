@@ -12,22 +12,23 @@ const getThemeClass =computed(() => {
   let tmp = []
   if (props.theDisabled) {
     if (props.theTheme === 'confirm') {
-      // tmp.push('bg-thecol/[.4] text-white/[.4]')
+	    tmp.push('opacity-50')
     } else {
-      tmp.push('bg-thecol/[.4] text-black/[.4] text-black')
+      tmp.push('opacity-50')
     }
   } else if (props.thePending) {
     if (props.theTheme === 'confirm') {
       // tmp.push('bg-thecol/[.6] text-white')
+	    tmp.push('opacity-50')
     } else {
-      tmp.push('bg-thecol/[.6] text-black/[.6] text-black')
+      tmp.push('opacity-50')
     }
   } else {
-    if (props.theTheme === 'confirm') {
-      tmp.push('bg-normal/[.5] text-black')
-    } else {
-      tmp.push('bg-normal text-black')
-    }
+    // if (props.theTheme === 'confirm') {
+	  //   tmp.push('opacity-50')
+    // } else {
+	  //   tmp.push('opacity-50')
+    // }
   }
   return tmp.join(' ')
 })

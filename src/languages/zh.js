@@ -94,5 +94,24 @@ export default {
     q3desc: "目标：$1000万 TVL",
     qtitle: "空投奖励兑换",
     qdesc: "完成 $100万TVL 目标后，启动兑换"
+  },
+  dialog: {
+    title: "🔗Link Your Socials",
+    desc: "Connect your Twitter account to verify your identity",
+    btntxt: "Link Your Twitter"
+  },
+  howgetairdrop: {
+    totaltxt: "Toral Points",
+    updatetxt: "积分每天 UTC 时间 13:59:59 更新",
+    logout: "Logout",
+    desc111: "@eth 888",
+    howget: "如何获得空投",
+    howgetdesc: "完成以下 3 个任务后您就有资格获得空投奖励",
+    howget1title: "关注 官方推特",
+    howget1desc: "每天获得 100 点奖励。",
+    howget2title: "回复官方推特帖子",
+    howget2desc: "每天将获得 500 点奖励。",
+    howget3title: "参与官方推特获得",
+    howget3desc: "根据活动规则，获得对应的点数奖励。",
   }
 };

@@ -4,12 +4,18 @@ import {
 } from "vue-router";
 
 const Index = () => import("@/pages/index.vue");
+const HowGetAirdrop = () => import("@/pages/howGetAirdrop.vue");
 
 const routes = [
   {
     path: "/",
     name: 'Index',
     component: Index,
+  },
+  {
+    path: "/howgetairdrop",
+    name: 'HowGetAirdrop',
+    component: HowGetAirdrop,
   },
   // {
   //   path: "/launchpad",
