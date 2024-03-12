@@ -12,7 +12,7 @@ import {useStore} from "vuex";
 import { useRoute } from 'vue-router'
 import Config from "@/util/config.js";
 import { useI18n } from 'vue-i18n'
-// import {checkUserSign, getNashConfig, getUserInfo, getUserSign} from "@/api/system.js";
+// import {checkUserSign, getNashConfig, getUserInfo, getUserSign} from "@/api/base.js";
 import BigNumber from "bignumber.js";
 
 const router = useRouter()

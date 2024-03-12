@@ -9,7 +9,16 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 // https://vitejs.dev/config/
 export default defineConfig({
   server: {
-    port: 12421
+    port: 12421,
+    // proxy: {
+    //   "/api": {
+    //     target: "http://198.46.189.214:5168",
+    //     pathRewrite:{
+    //       '^/api' : '' // 重写请求
+    //     }
+    //     // rewrite: (path) => path.replace(/^\/api/, ""),
+    //   },
+    // },
   },
   base: './',
   resolve: {

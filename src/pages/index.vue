@@ -87,10 +87,15 @@ import DialogLogin from '@/components/DialogLogin/index.vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 // Import Swiper styles
 import 'swiper/css';
+import { getTwitterJumpUrl, callback, login } from "@/api/base.js"
 import {getCurrentInstance, ref, onMounted, computed, watch} from "vue";
+import { useRouter } from 'vue-router'
 import {useStore} from "vuex";
+import {getCookie, removeCookie} from "../util/cookie";
 const { proxy } = getCurrentInstance()
 const store = useStore()
+const router = useRouter()
+
 const isShowLoginDialog = ref(false)
 const artList = ref([
 	{
@@ -186,11 +191,33 @@ const showDialogLogin = () => {
 	isShowLoginDialog.value = true
 }
 const loginTiwwiter = () =>{
-	isShowLoginDialog.value = false
+	// isShowLoginDialog.value = false
+	getTwitterJumpUrl().then(res => {
+		console.log(res)
+	  window.location.href = res.jump_url
+	})
 }
 const handleClose = () => {
 	isShowLoginDialog.value = false
 }
+onMounted(() => {
+  console.log(router.currentRoute.value.query)
+  const { oauth_token, oauth_verifier } = router.currentRoute.value.query
+  // if (getCookie("authorization")) {
+	//   login().then(res1 => {
+	// 	  console.log(res1)
+	//   })
+  // } else
+  	if (router.currentRoute.value.query && oauth_token && oauth_verifier){
+	  callback(oauth_token, oauth_verifier).then(res => {
+      login().then(res1 => {
+      	console.log(res1)
+      })
+    }).catch(err => {
+    	removeCookie('authorization')
+    })
+  }
+})
 </script>
 <style>
   .swiper{

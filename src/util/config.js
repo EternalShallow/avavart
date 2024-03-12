@@ -2,7 +2,7 @@ const isDebug = import.meta.env.MODE === 'beta';
 export default {
   isDebug,
   ethUrl: '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
-  vevoteUrl: isDebug ? 'http://3.108.9.4:8115' : 'https://ve.teco.news',
+  requestUrl: isDebug ? 'http://198.46.189.214:5168' : 'http://198.46.189.214:5168',
   noMoreHtml: (txt = '') => {
     return `<p class="upwarp-nodata">${txt}</p>`
   },

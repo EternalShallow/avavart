@@ -1,40 +1,16 @@
 import axios from "axios";
-// import store from '../store'
-//import Config from '../utils/config'
-import { hex_md5 } from "@/modules/md5";
-import Base64 from "../modules/base64";
-
+import {getCookie, setCookie} from "./cookie";
 const service = axios.create({
-  //baseURL: Config.ajaxUrl,
+  // baseURL: '/api',
   timeout: 30 * 1000,
 });
-
 service.interceptors.request.use(
   (config) => {
-    // console.log(config)
-    config.headers["Content-Type"] = "application/json";
-    let theParams = config.data;
-    theParams["SIGN"] = hex_md5(new Date().getTime()).toUpperCase();
-
-    if (config.signVeVote) {
-      let sign = make_sign(theParams, false, '[tt_vote_api_dsdh5481_2023.09.08]');
-      if (sign !== "") {
-        theParams["sign"] = sign;
-      }
-      config.data = theParams;
-      // console.log(JSON.stringify(theParams))
-    } else if (config.signValidate) {
-      config.headers["Content-Type"] = "multipart/form-data";
-      let sign = make_sign(theParams);
-      if (sign !== "") {
-        theParams["sign"] = sign;
-      }
-      let formData = new FormData();
-      formData.append("data", JSON.stringify(theParams));
-      // console.log(JSON.stringify(theParams))
-      config.data = formData;
-    } else {
-      config.headers["Content-Type"] = "application/json";
+    console.log(config)
+    config.headers["Content-Type"] = "application/json;charset=UTF-8;charset=UTF-8";
+    if (config.url.indexOf('/login') > -1) {
+      config.headers["Authorization"] = getCookie("authorization")
+      config.headers["authorization"] = getCookie("authorization")
     }
     return config;
   },
@@ -47,6 +23,10 @@ service.interceptors.request.use(
 service.interceptors.response.use(
   (response) => {
     // console.log('intercepter response = > ',response.data)
+    console.log(response.headers["authorization"])
+    if (response.headers["authorization"]){
+      setCookie('authorization', response.headers["authorization"])
+    }
     const res = response.data;
     return res;
   },
@@ -63,38 +43,3 @@ service.interceptors.response.use(
 );
 
 export default service;
-
-function make_sign(dict, signValidateWtt, theKey) {
-  let encryption_key = signValidateWtt
-    ? "[tdex_newuser_2022.8.23]"
-    : "[NFT_2023.03.17]";
-  if (theKey) {
-    encryption_key = theKey
-  }
-  console.log(encryption_key)
-
-  if (encryption_key == "") return "";
-
-  if (dict["sign"]) delete dict["sign"];
-
-  let str = json_sort(dict);
-  str += "&key=" + encryption_key;
-  // console.log(str)
-  let data = Base64.encode(str);
-  // ca.log(data);
-  return hex_md5(data).toUpperCase();
-}
-
-function json_sort(dict) {
-  let arr = [];
-  for (let key in dict) {
-    arr.push(key);
-  }
-  arr.sort();
-  let str = "";
-  for (let i in arr) {
-    // console.log(dict[arr[i]])
-    str += arr[i] + "=" + dict[arr[i]] + "&";
-  }
-  return str.substr(0, str.length - 1);
-}
