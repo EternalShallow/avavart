@@ -3,7 +3,7 @@ const { location } = window;
 // 创建cookie
 export const setCookie = (name, value) => {
   const exp = new Date();
-  exp.setTime(exp.getTime() + 36500 * 24 * 60 * 60 * 1000);
+  exp.setTime(exp.getTime() + 24 * 60 * 60 * 1000);
   let index = location.host.indexOf('.') // 获取第一个.的位置
   const domain = location.host.substring(index,)
   if (location.host.split(".")[3]) {

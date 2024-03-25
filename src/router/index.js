@@ -9,7 +9,7 @@ const HowGetAirdrop = () => import("@/pages/howGetAirdrop.vue");
 const routes = [
   {
     path: "/",
-    name: 'Index',
+    name: 'Home',
     component: Index,
   },
   {

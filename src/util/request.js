@@ -9,7 +9,7 @@ service.interceptors.request.use(
     console.log(config)
     config.headers["Content-Type"] = "application/json;charset=UTF-8;charset=UTF-8";
     if (config.url.indexOf('/login') > -1) {
-      config.headers["Authorization"] = getCookie("authorization")
+      // config.headers["Authorization"] = getCookie("authorization")
       config.headers["authorization"] = getCookie("authorization")
     }
     return config;
@@ -33,11 +33,6 @@ service.interceptors.response.use(
   (error) => {
     //网络请求失败等
     console.log("request error = ", error);
-    // Message({
-    //   message: error.message,
-    //   type: 'error',
-    //   duration: 5 * 1000
-    // })
     return Promise.reject(error);
   }
 );

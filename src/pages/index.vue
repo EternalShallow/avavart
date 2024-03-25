@@ -76,7 +76,7 @@ div(class="bg-red w-full overflow-x-hidden")
         div(class="mt-[.32rem] font-bold text-36") {{$t('roadmap.qtitle')}}
         div(class="text-28 mt-[.08rem]") {{$t('roadmap.qdesc')}}
   PageFooter
-DialogLogin(:isShow="isShowLoginDialog" @confirm="loginTiwwiter" @close="handleClose")
+DialogLogin(:isShow="isShowLoginDialog" @confirm="getTiwwiterUrl" @close="handleClose")
 </template>
 
 <script setup>
@@ -190,7 +190,7 @@ const artList = ref([
 const showDialogLogin = () => {
 	isShowLoginDialog.value = true
 }
-const loginTiwwiter = () =>{
+const getTiwwiterUrl = () =>{
 	// isShowLoginDialog.value = false
 	getTwitterJumpUrl().then(res => {
 		console.log(res)
@@ -200,23 +200,24 @@ const loginTiwwiter = () =>{
 const handleClose = () => {
 	isShowLoginDialog.value = false
 }
+const loginTiwwiter = () => {
+	login().then(res1 => {
+		console.log(res1)
+		router.replace({ name: 'Home' });
+	})
+}
 onMounted(() => {
-  console.log(router.currentRoute.value.query)
-  const { oauth_token, oauth_verifier } = router.currentRoute.value.query
-  // if (getCookie("authorization")) {
-	//   login().then(res1 => {
-	// 	  console.log(res1)
-	//   })
-  // } else
-  	if (router.currentRoute.value.query && oauth_token && oauth_verifier){
-	  callback(oauth_token, oauth_verifier).then(res => {
-      login().then(res1 => {
-      	console.log(res1)
-      })
-    }).catch(err => {
-    	removeCookie('authorization')
-    })
-  }
+	console.log(router.currentRoute.value.query)
+	const {oauth_token, oauth_verifier} = router.currentRoute.value.query
+	if (getCookie("authorization")) {
+		loginTiwwiter()
+	} else if (router.currentRoute.value.query && oauth_token && oauth_verifier) {
+		callback(oauth_token, oauth_verifier).then(() => {
+			loginTiwwiter()
+		}).catch(err => {
+			removeCookie('authorization')
+		})
+	}
 })
 </script>
 <style>
