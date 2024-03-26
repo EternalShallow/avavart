@@ -64,7 +64,7 @@ export default {
   },
   index: {
     toptxt: "Tip your favorite serious \n artist with $AVAV",
-    toptip: "You are now invited to become an early supporter of Avav.art. It only takes a few minutes to join the community and interact, and you will be eligible for airdrop rewards",
+    toptip: "You are now invited to become an early supporter of Avav.art. It only takes a few minutes to \n join the community and interact, and you will be eligible for airdrop rewards",
   },
   meet: {
     title: "Meet Avav.art",

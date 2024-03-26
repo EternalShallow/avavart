@@ -6,7 +6,7 @@ div(class="bg-red w-full overflow-x-hidden")
       div(class="h-120")
       img(class="w-[3rem] h-[3rem] block mr-auto ml-auto" src="@/assets/images/logo_reb_white.png")
       div(class="text-[1.04rem] whitespace-pre-line leading-[1.5rem] mt-[.4rem]") {{ $t('index.toptxt') }}
-      div(class="text-32 px-[3.2rem] mt-48") {{ $t('index.toptip') }}
+      div(class="text-32 px-[3.2rem] mt-48 whitespace-pre-line") {{ $t('index.toptip') }}
       div(class="flex justify-center")
         XButton(@click="showDialogLogin" :theTheme="'confirm'" class="mr-[.56rem] bg-normal/[.5] mt-66 w-[4.2rem] h-1.04rem" :text="$t('public.link2')")
         XButton(@click="showDialogLogin" :theTheme="'get'" class="bg-normal mt-66 text-black w-[4.2rem] h-1.04rem" :text="$t('public.link3')")

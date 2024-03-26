@@ -15,9 +15,9 @@ export default {
       local: 'zh',
       txt: '中文'
     },
-    {
-      local: 'ko',
-      txt: '한국어'
-    },
+    // {
+    //   local: 'ko',
+    //   txt: '한국어'
+    // },
   ],
 }
