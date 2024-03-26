@@ -188,7 +188,7 @@ const artList = ref([
 	}
 ])
 const showDialogLogin = () => {
-	isShowLoginDialog.value = true
+	loginTiwwiter()
 }
 const getTiwwiterUrl = () =>{
 	// isShowLoginDialog.value = false
@@ -200,20 +200,32 @@ const getTiwwiterUrl = () =>{
 const handleClose = () => {
 	isShowLoginDialog.value = false
 }
-const loginTiwwiter = () => {
-	login().then(res1 => {
-		console.log(res1)
-		router.replace({ name: 'Home' });
-	})
+const loginTiwwiter = async (isInit = false) => {
+	const res = await login()
+  console.log(res)
+  if (res.code === -1) {
+  	if (!isInit){
+		  isShowLoginDialog.value = true
+	  }
+  } else {
+	  store.dispatch('system/setUserInfo', res.user)
+	  router.replace({ name: 'Home' });
+	  if (!isInit){
+		  router.push({
+			  path: '/howgetairdrop'
+		  })
+	  }
+
+  }
 }
 onMounted(() => {
 	console.log(router.currentRoute.value.query)
 	const {oauth_token, oauth_verifier} = router.currentRoute.value.query
 	if (getCookie("authorization")) {
-		loginTiwwiter()
+		loginTiwwiter(true)
 	} else if (router.currentRoute.value.query && oauth_token && oauth_verifier) {
 		callback(oauth_token, oauth_verifier).then(() => {
-			loginTiwwiter()
+			loginTiwwiter(true)
 		}).catch(err => {
 			removeCookie('authorization')
 		})

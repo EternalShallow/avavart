@@ -23,9 +23,14 @@ service.interceptors.request.use(
 service.interceptors.response.use(
   (response) => {
     // console.log('intercepter response = > ',response.data)
-    console.log(response.headers["authorization"])
+    console.log()
     if (response.headers["authorization"]){
       setCookie('authorization', response.headers["authorization"])
+    }
+    if (response.request.responseURL.indexOf('/login') > -1){
+      if ((response.headers["responseNeed-Update-Token"] || response.headers["responseNeed-Update-Token"] === 'true') && response.headers["responseNeed-Update-Token"] !== 'false') {
+        console.log('即将过期')
+      }
     }
     const res = response.data;
     return res;

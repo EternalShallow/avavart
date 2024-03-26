@@ -10,12 +10,21 @@ const getDefaultState = () => {
     usdtDecimal: 6,
     bgtDecimal: 18,
     configLoaded: false,
+    useInfo: {
+      "name": "--",
+      "screen_name": "",
+      "profile_image_url_https": "",
+      "score": 0
+    }
   };
 };
 
 const state = getDefaultState();
 
 const mutations = {
+  SET_USERINFO: (state, load) => {
+    state.useInfo = load;
+  },
   SET_CONFIG_LOADED: (state, load) => {
     state.configLoaded = load;
   },
@@ -54,6 +63,9 @@ const actions = {
       commit("SET_ACCOUNT", account);
       resolve();
     });
+  },
+  setUserInfo({ commit }, userInfo) {
+    commit("SET_USERINFO", userInfo);
   },
 };
 

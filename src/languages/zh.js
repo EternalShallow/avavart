@@ -104,6 +104,7 @@ export default {
     totaltxt: "Toral Points",
     updatetxt: "积分每天 UTC 时间 13:59:59 更新",
     logout: "Logout",
+    login: "Login",
     desc111: "@eth 888",
     howget: "如何获得空投",
     howgetdesc: "完成以下 3 个任务后您就有资格获得空投奖励",
